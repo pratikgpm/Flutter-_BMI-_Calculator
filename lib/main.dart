@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:untitled1/Flash_Screen.dart';
+import 'package:untitled1/result_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -142,12 +143,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 var wt = int.parse(edit1.text.toString());
                 var ft = int.parse(edit2.text.toString());
                 var inc;
+                var ht ;
                 edit3.text.isEmpty ? inc = 0 :
                 inc = int.parse(edit3.text.toString());
                 tx = '  Your BMI is :';
                 ft *= 12;
                 inc += ft;
                 dynamic t;
+                ht = inc;
                 t = inc * 0.0254;
                 t *= t;
                 d = wt/t;
@@ -161,6 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   } else if(d >= 40){
                     Col = clr[3];
                   }
+                Navigator.push(context,MaterialPageRoute(builder: (context) => result_screen(wt, ht, d.toStringAsFixed(2), Col),));
                   setState(() {
 
                 });
