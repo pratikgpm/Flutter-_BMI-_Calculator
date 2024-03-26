@@ -79,6 +79,10 @@ flutter:
     - family: myFont
       fonts:
         - asset: assets/fonts/SingleDay-Regular.ttf
+    - family: myDaily
+      fonts:
+        - asset: assets/fonts/daily.ttf
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
