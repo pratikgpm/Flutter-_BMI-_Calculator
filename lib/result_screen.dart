@@ -4,14 +4,21 @@ class result_screen extends StatefulWidget {
   var weight;
   var answer ;
   var color_dot;
+  var  foot   ;
+  var inches;
 result_screen(this.weight,this.height,this.answer,this.color_dot){}
   @override
   State<result_screen> createState() => _result_screenState();
 }
 
 class _result_screenState extends State<result_screen> {
+
   @override
   Widget build(BuildContext context) {
+    widget.foot = int.parse(widget.height.toString()) ;
+    widget.foot ~/= 12;
+    widget.inches = widget.height % 12;
+
     return Scaffold(
       appBar: AppBar(
         title: Center(
@@ -43,7 +50,7 @@ class _result_screenState extends State<result_screen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Height : ',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w700),),
-                  Text('${widget.height}',style: TextStyle(fontSize: 20,color: Colors.grey.shade500,fontWeight: FontWeight.w500),),
+                  Text('${widget.foot}"${widget.inches}',style: TextStyle(fontSize: 20,color: Colors.grey.shade500,fontWeight: FontWeight.w500),),
                 ],
               ),
             ),
