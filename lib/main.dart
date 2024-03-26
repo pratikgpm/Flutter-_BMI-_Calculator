@@ -89,11 +89,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         tx = '';
                         ans = '';
                         Col = Colors.white;
-                        setState(() {
-
-                        });
+                        setState(() {});
                       },
-                      child: Icon(Icons.settings_backup_restore_outlined,color: Colors.grey,)),
+                      child: Icon(
+                        Icons.settings_backup_restore_outlined,
+                        color: Colors.grey,
+                      )),
                   label: Text(
                     'Enter your Weight',
                     style: TextStyle(color: Colors.grey),
@@ -128,61 +129,65 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 30,
             ),
-          InkWell(
-            onTap: (){
-              if(edit1.text.isEmpty || edit2.text.isEmpty){
-                tx = '  Please fill all bkank Fields';
-                d = '';
-                ans ='';
-                Col = Colors.white;
-                setState(() {
-
-                });
-              }
-              else {
-                var wt = int.parse(edit1.text.toString());
-                var ft = int.parse(edit2.text.toString());
-                var inc;
-                var ht ;
-                edit3.text.isEmpty ? inc = 0 :
-                inc = int.parse(edit3.text.toString());
-                tx = '  Your BMI is :';
-                ft *= 12;
-                inc += ft;
-                dynamic t;
-                ht = inc;
-                t = inc * 0.0254;
-                t *= t;
-                d = wt/t;
-                ans = '${d.toStringAsFixed(2)}';
-                if (d <= 18.4) {
+            InkWell(
+              onTap: () {
+                if (edit1.text.isEmpty || edit2.text.isEmpty) {
+                  tx = '  Please fill all bkank Fields';
+                  d = '';
+                  ans = '';
+                  Col = Colors.white;
+                  setState(() {});
+                } else {
+                  var wt = int.parse(edit1.text.toString());
+                  var ft = int.parse(edit2.text.toString());
+                  var inc;
+                  var ht;
+                  edit3.text.isEmpty
+                      ? inc = 0
+                      : inc = int.parse(edit3.text.toString());
+                  tx = '  Your BMI is :';
+                  ft *= 12;
+                  inc += ft;
+                  dynamic t;
+                  ht = inc;
+                  t = inc * 0.0254;
+                  t *= t;
+                  d = wt / t;
+                  ans = '${d.toStringAsFixed(2)}';
+                  if (d <= 18.4) {
                     Col = clr[0];
-                  } else if (d >= 18.5 && d <=24.9) {
+                  } else if (d >= 18.5 && d <= 24.9) {
                     Col = clr[1];
-                  } else if(d >= 25.0 && d <=39.9) {
+                  } else if (d >= 25.0 && d <= 39.9) {
                     Col = clr[2];
-                  } else if(d >= 40){
+                  } else if (d >= 40) {
                     Col = clr[3];
                   }
-                Navigator.push(context,MaterialPageRoute(builder: (context) => result_screen(wt, ht, d.toStringAsFixed(2), Col),));
-                  setState(() {
-
-                });
-
-              }
-            },
-            child: Container(
-              width:  150,
-              decoration: BoxDecoration(
-                color: Colors.indigo,
-                borderRadius: BorderRadius.circular(75),
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            result_screen(wt, ht, d.toStringAsFixed(2), Col),
+                      ));
+                  setState(() {});
+                }
+              },
+              child: Container(
+                width: 150,
+                decoration: BoxDecoration(
+                  color: Colors.indigo,
+                  borderRadius: BorderRadius.circular(75),
+                ),
+                child: Center(
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Calculate',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                )),
               ),
-              child: Center(child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text('Calculate' , style: TextStyle(color: Colors.white , fontSize: 20),),
-              )),
             ),
-          ),
             SizedBox(
               height: 20,
             ),
@@ -190,10 +195,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: 400,
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      CircleAvatar(
-                        backgroundColor: Col,
-                        radius: 8,
-                      ),
+                  CircleAvatar(
+                    backgroundColor: Col,
+                    radius: 8,
+                  ),
                   Text(
                     '$tx',
                     style: TextStyle(
